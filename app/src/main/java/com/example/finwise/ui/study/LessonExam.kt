@@ -1,4 +1,3 @@
 package com.example.finwise.ui.study
 
-class LessonExam {
-}
+data class LessonExam(val id: Int)

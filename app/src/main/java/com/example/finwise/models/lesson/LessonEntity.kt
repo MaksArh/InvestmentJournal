@@ -6,40 +6,58 @@ import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 
 open class Lesson(var id: Int, var progress: MutableState<Float>, var title: String, var steps: List<Step>)
+
+
+
 var steps1 = listOf(
     Step(0,"1","", mutableStateOf(false)),
     Step(1,"2","", mutableStateOf(false)),
     Step(2,"3","", mutableStateOf(false)),
-    Step(3,"4","", mutableStateOf(false)))
+    Step(3,"4","", mutableStateOf(false)),
+    Step(4,"5","", mutableStateOf(false)))
 object lesson1 : Lesson(0, mutableFloatStateOf(0f),"Валюты",steps1)
+
+
 
 var steps2 = listOf(
     Step(0,"1","", mutableStateOf(false)),
     Step(1,"2","", mutableStateOf(false)),
     Step(2,"3","", mutableStateOf(false)),
-    Step(3,"4","", mutableStateOf(false)))
+    Step(3,"4","", mutableStateOf(false)),
+    Step(4,"5","", mutableStateOf(false)))
 object lesson2 : Lesson(1, mutableFloatStateOf(0f),"Акции",steps2)
+
+
 
 var steps3 = listOf(
     Step(0,"","", mutableStateOf(false)),
     Step(1,"","", mutableStateOf(false)),
     Step(2,"","", mutableStateOf(false)),
-    Step(3,"","", mutableStateOf(false)))
+    Step(3,"","", mutableStateOf(false)),
+    Step(4,"","", mutableStateOf(false)))
 object lesson3 : Lesson(2, mutableFloatStateOf(0f),"Облигации",steps3)
+
+
 
 var steps4 = listOf(
     Step(0,"","", mutableStateOf(false)),
     Step(1,"","", mutableStateOf(false)),
     Step(2,"","", mutableStateOf(false)),
-    Step(3,"","", mutableStateOf(false)))
+    Step(3,"","", mutableStateOf(false)),
+    Step(4,"","", mutableStateOf(false)))
 object lesson4 : Lesson(3, mutableFloatStateOf(0f),"ИИС",steps4)
+
+
 
 var steps5 = listOf(
     Step(0,"","", mutableStateOf(false)),
     Step(1,"","", mutableStateOf(false)),
     Step(2,"","", mutableStateOf(false)),
-    Step(3,"","", mutableStateOf(false)))
+    Step(3,"","", mutableStateOf(false)),
+    Step(4,"","", mutableStateOf(false)))
 object lesson5 : Lesson(4,mutableFloatStateOf(0f),"Трейдинг",steps5)
+
+
 
 var lessons = listOf(lesson1,lesson2,lesson3,lesson4,lesson5)
 
