@@ -8,11 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Card
 import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.input.pointer.PointerIcon.Companion.Text
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -22,14 +25,18 @@ fun AchievementCard(
 ) {
     Card(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(16.dp)
             .clickable { onAchievementClick(achievement) },
-        elevation = 4.dp
+        shape = MaterialTheme.shapes.medium,
+        elevation = 4.dp,
+        
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
+            Text(text = achievement.name, textAlign = TextAlign.Center)
             // Круглый прогресс бар
             CircularProgressIndicator(
                 modifier = Modifier
@@ -50,4 +57,9 @@ fun AchievementCard(
 //            )
         }
     }
+}
+@Preview(showBackground = true)
+@Composable
+fun preview(){
+    AchievementCard(achievement = Achievement("epi",1f), onAchievementClick ={} )
 }

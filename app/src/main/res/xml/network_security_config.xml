@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+
+    <!-- Пермишен для HTTP-трафика (не рекомендуется использовать на продакшене) -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- Разрешаем необходимый домен -->
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+
+    <!-- Если нужно добавить отдельные правила для конкретных доменов -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">www.alphavantage.com</domain>
+        <trust-anchors>
+            <!-- Разрешаем необходимый домен -->
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+
+</network-security-config>

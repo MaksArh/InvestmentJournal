@@ -76,5 +76,12 @@ dependencies {
     implementation("org.litote.kmongo:kmongo-coroutine:4.3.0")
     implementation("org.litote.kmongo:kmongo-async:4.3.0")
     implementation ("androidx.datastore:datastore-preferences:1.0.0")
+    implementation ("com.google.code.gson:gson:2.8.7")
+    implementation("io.ktor:ktor-client-core:1.6.4")
+    implementation("io.ktor:ktor-client-json:1.6.4")
+    implementation ("io.ktor:ktor-client-cio:1.6.4")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+
+
 
 }

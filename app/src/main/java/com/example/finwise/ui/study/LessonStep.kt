@@ -23,14 +23,14 @@ fun StepSquare(step: Step, isSelected: Boolean, onStepClick: () -> Unit) {
     Box(
         modifier = Modifier
             .size(50.dp)
-            .background(if (step.completed.value) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
+            .background(if (step.completed.value)
+                MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.secondary,
                 shape = MaterialTheme.shapes.small)
             .clickable { onStepClick() },
         contentAlignment = Alignment.Center,
     ) {
         Text(
-            text = (step.id).toString(), // Нумерация с 1, а не с 0
-            color = Color.White,
+            text = (step.id+1).toString(), // Нумерация с 1, а не с 0
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold
         )

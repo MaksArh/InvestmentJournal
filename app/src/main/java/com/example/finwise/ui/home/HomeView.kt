@@ -19,6 +19,9 @@ fun HomeView() {
         Achievement("Achievement 1", 0.7f),
         Achievement("Achievement 2", 0.5f),
         Achievement("Achievement 3", 0.9f),
+        Achievement("Achievement 3", 0.9f),
+        Achievement("Achievement 3", 0.9f),
+        Achievement("Achievement 3", 0.9f)
         // Добавьте свои данные для ачивок
     )
 
@@ -33,7 +36,7 @@ fun HomeView() {
 
                 AchievementsList(
                     achievements = achievements,
-                    onAchievementClick = { /* Обработка нажатия на ачивку */ }
+                    onAchievementClick = { /* Обработка нажатия на ачивку */ } //не надо
                 )
             }
         }

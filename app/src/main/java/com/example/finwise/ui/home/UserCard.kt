@@ -7,16 +7,15 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -33,8 +32,10 @@ fun UserCard(
         modifier = Modifier
             .fillMaxWidth()
             .aspectRatio(1f)
-            .padding(16.dp),
-        shape = MaterialTheme.shapes.medium
+            .padding(16.dp)
+            .background(MaterialTheme.colorScheme.onBackground),
+        shape = MaterialTheme.shapes.medium,
+        elevation = 4.dp
     ) {
         Row(modifier = Modifier
             .fillMaxHeight(0.5f)) {
@@ -74,7 +75,7 @@ fun UserCard(
                     // Имя пользователя
                     Text(
                         text = userName,
-                        style = MaterialTheme.typography.h6,
+                        style = MaterialTheme.typography.displaySmall,
                         textAlign = TextAlign.Center
                     )
 
