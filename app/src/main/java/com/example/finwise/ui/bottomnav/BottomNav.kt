@@ -11,9 +11,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.navArgument
+import com.example.finwise.models.lesson.getLessonById
+import com.example.finwise.models.lesson.getLessons
+import com.example.finwise.ui.study.LessonPage
+
 
 @Composable
 fun BottomNav(navController: NavController){
@@ -40,7 +46,7 @@ fun BottomNav(navController: NavController){
                     navController.navigate(item.screen_route) {
                         navController.graph.startDestinationRoute?.let { screen_route ->
                             popUpTo(screen_route) {
-                                saveState = true
+                                inclusive = true
                             }
                         }
                         launchSingleTop = true
@@ -56,13 +62,21 @@ fun BottomNav(navController: NavController){
 fun NavigationGraph(navController: NavHostController){
     NavHost(navController, startDestination = BottomNavItem.Study.screen_route){
         composable(BottomNavItem.Study.screen_route){
-            StudyScreen()
+            StudyScreen(navController = navController)
         }
         composable(BottomNavItem.News.screen_route){
             NewsScreen()
         }
         composable(BottomNavItem.Home.screen_route){
             HomeScreen()
+        }
+        // Добавьте новый маршрут для LessonPage
+        composable("lessonPage/{lessonId}") { backStackEntry ->
+            val lessonId = backStackEntry.arguments?.getString("lessonId")?.toInt()
+            val lesson = lessonId?.let { getLessonById(it) }
+            if (lesson != null){
+                LessonPage(lesson = lesson)
+            }
         }
     }
 }

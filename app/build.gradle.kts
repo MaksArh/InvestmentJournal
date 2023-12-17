@@ -69,4 +69,12 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10")
+    implementation("org.litote.kmongo:kmongo:4.2.3")
+    implementation("org.mongodb:mongodb-driver-sync:4.2.3")
+    implementation("org.litote.kmongo:kmongo-coroutine:4.3.0")
+    implementation("org.litote.kmongo:kmongo-async:4.3.0")
+    implementation ("androidx.datastore:datastore-preferences:1.0.0")
+
 }
