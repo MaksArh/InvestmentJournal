@@ -1,6 +1,8 @@
 package com.example.finwise.ui.study
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -19,12 +21,15 @@ import com.example.finwise.models.lesson.getLessons
 fun LessonList(lessons: List<Lesson>, onLessonClick: (Lesson) -> Unit) {
     LazyColumn(
         modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(horizontal = 16.dp)
+
 
     ) {
         item {
             Text(
-                text = "Уроки по сливу депо",
+                text = "Уроки",
                 style = MaterialTheme.typography.headlineLarge,
                 modifier = Modifier.padding(8.dp),
                 color = MaterialTheme.colorScheme.primary
@@ -39,8 +44,8 @@ fun LessonList(lessons: List<Lesson>, onLessonClick: (Lesson) -> Unit) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun preview(){
-    LessonList(lessons = getLessons(), onLessonClick ={} )
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun preview(){
+//    LessonList(lessons = getLessons(), onLessonClick ={} )
+//}

@@ -4,9 +4,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,16 +43,26 @@ fun StepSquare(step: Step, isSelected: Boolean, onStepClick: () -> Unit) {
 
 @Composable
 fun StepContent(step: Step) {
-    Column(
+    LazyColumn(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(16.dp)
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(horizontal = 16.dp)
+
+
     ) {
-        Text(
-            text = step.title,
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(bottom = 8.dp)
-        )
-        Text(text = step.body, style = MaterialTheme.typography.bodyLarge)
+        item {
+            Text(
+                color = MaterialTheme.colorScheme.onSurface,
+                text = step.title,
+                style = MaterialTheme.typography.titleLarge,
+                modifier = Modifier.padding(bottom = 16.dp)
+            )
+            Divider(modifier = Modifier.padding(bottom=8.dp ),color = MaterialTheme.colorScheme.primary)
+        }
+        item{
+            Text(color = MaterialTheme.colorScheme.onSurface,text = step.body, style = MaterialTheme.typography.bodyLarge)
+
+        }
     }
 }

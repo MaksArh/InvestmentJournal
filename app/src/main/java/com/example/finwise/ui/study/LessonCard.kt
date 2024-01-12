@@ -20,6 +20,7 @@ import com.example.finwise.models.lesson.Lesson
 @Composable
 fun LessonCard(lesson: Lesson, modifier: Modifier) {
     Card(
+        backgroundColor = MaterialTheme.colorScheme.surface,
         modifier = modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp),
@@ -33,10 +34,12 @@ fun LessonCard(lesson: Lesson, modifier: Modifier) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Text(
+                color = MaterialTheme.colorScheme.onSurface,
                 text = lesson.title,
                 style = MaterialTheme.typography.headlineMedium
             )
             CircularProgressIndicator(
+                color = MaterialTheme.colorScheme.primary,
                 modifier = Modifier.size(40.dp),
                 progress = lesson.progress.value,
                 strokeWidth = 4.dp

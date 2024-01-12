@@ -1,7 +1,9 @@
 package com.example.finwise.ui.study
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -21,8 +23,12 @@ import com.example.finwise.models.lesson.confirmStep
 @Composable
 fun LessonPage(lesson: Lesson) {
     var selectedStepIndex by remember { mutableStateOf(0) }
-    Column {
-        Text(text = lesson.title, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(16.dp))
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+    ) {
+        Text(color = MaterialTheme.colorScheme.onSurface,text = lesson.title, style = MaterialTheme.typography.headlineSmall, modifier = Modifier.padding(16.dp))
 
         LazyRow {
             item{Spacer(modifier = Modifier.width(8.dp))}
@@ -36,10 +42,8 @@ fun LessonPage(lesson: Lesson) {
             }
         }
 
-        LazyColumn {val step = lesson.steps[selectedStepIndex]
-            item {
-                StepContent(step = step)
-            }
+        Column(Modifier.padding(0.dp,8.dp,0.dp,0.dp)){val step = lesson.steps[selectedStepIndex]
+            StepContent(step = step)
         }
     }
 }

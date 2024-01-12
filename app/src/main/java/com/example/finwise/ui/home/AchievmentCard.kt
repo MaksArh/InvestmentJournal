@@ -1,5 +1,6 @@
 package com.example.finwise.ui.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -29,6 +30,8 @@ fun AchievementCard(
             .clickable { onAchievementClick(achievement) },
         shape = MaterialTheme.shapes.medium,
         elevation = 4.dp,
+        backgroundColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface
         
     ) {
         Column(

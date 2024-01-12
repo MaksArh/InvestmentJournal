@@ -1,6 +1,7 @@
 package com.example.finwise.ui.bottomnav
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.finwise.models.lesson.getLessons
 import com.example.finwise.ui.home.HomeView
@@ -19,11 +20,11 @@ fun StudyScreen(navController: NavHostController) {
 
 
 @Composable
-fun NewsScreen () {
-    NewsView()
+fun NewsScreen (navController: NavController) {
+    NewsView(navController)
 }
 
 @Composable
-fun HomeScreen () {
-    HomeView()
+fun HomeScreen (mainNavController: NavController) {
+    HomeView(mainNavController)
 }

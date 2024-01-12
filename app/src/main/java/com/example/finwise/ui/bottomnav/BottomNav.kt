@@ -18,6 +18,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import com.example.finwise.models.lesson.getLessonById
 import com.example.finwise.models.lesson.getLessons
+import com.example.finwise.ui.auth.AuthViewModel
+import com.example.finwise.ui.auth.LoginScreen
+import com.example.finwise.ui.auth.RegisterScreen
 import com.example.finwise.ui.study.LessonPage
 
 
@@ -59,16 +62,16 @@ fun BottomNav(navController: NavController){
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController){
+fun NavigationGraph(navController: NavHostController,mainNavController: NavController){
     NavHost(navController, startDestination = BottomNavItem.Study.screen_route){
         composable(BottomNavItem.Study.screen_route){
             StudyScreen(navController = navController)
         }
         composable(BottomNavItem.News.screen_route){
-            NewsScreen()
+            NewsScreen(mainNavController)
         }
         composable(BottomNavItem.Home.screen_route){
-            HomeScreen()
+            HomeScreen(mainNavController)
         }
         // Добавьте новый маршрут для LessonPage
         composable("lessonPage/{lessonId}") { backStackEntry ->

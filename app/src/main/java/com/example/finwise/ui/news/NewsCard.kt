@@ -57,7 +57,9 @@ fun NewsCard(quote: String, quoteTemp: GlobalQuote) {
             .fillMaxWidth()
             .padding(vertical = 8.dp, horizontal = 4.dp),
         shape = MaterialTheme.shapes.medium,
-        elevation = 4.dp
+        elevation = 4.dp,
+        backgroundColor = MaterialTheme.colorScheme.surface,
+        contentColor = MaterialTheme.colorScheme.onSurface
     ) {
         Row(verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween) {
