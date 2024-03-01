@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FinWise"
+rootProject.name = "InvestmentJournal"
 include(":app")
