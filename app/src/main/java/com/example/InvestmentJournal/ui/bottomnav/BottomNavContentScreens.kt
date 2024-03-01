@@ -1,11 +1,14 @@
 package com.example.InvestmentJournal.ui.bottomnav
 
 import PortfolioEditPage
+import PortfolioMonitorningPage
+import PortfolioMonitorningViewModel
 import PortfolioViewModel
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import com.example.InvestmentJournal.ui.market.MarketPage
+import com.example.InvestmentJournal.ui.market.MarketViewModel
 
 
 @Composable
@@ -18,13 +21,16 @@ fun EditScreen(navController: NavHostController) {
 
 
 @Composable
-fun MonitorningScreen(navController: NavController) {
-
+fun MonitoringScreen(navController: NavHostController) {
+    val viewModel: PortfolioMonitorningViewModel = viewModel()
+    PortfolioMonitorningPage(viewModel = viewModel, navHostController = navController)
 
 }
 
 
 @Composable
-fun MarketScreen (navController: NavController) {
+fun MarketScreen (navController: NavHostController) {
+    val viewModel: MarketViewModel = viewModel()
+    MarketPage(viewModel)
 }
 

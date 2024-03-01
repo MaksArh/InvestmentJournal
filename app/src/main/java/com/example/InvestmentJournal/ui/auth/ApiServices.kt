@@ -20,7 +20,7 @@ interface ApiService {
     fun checkTicker(@Path("ticker") ticker: String): Boolean
 
     @GET("market")
-    fun getMarketPapers(): List<MarketPaper>
+    fun getMarketPapers(): Collection<MarketPaper>
 
     @GET("portfolio/list")
     fun getPortfolioList(@Query("portfolioId") portfolioId: Int, @Query("userId") userId: Int): List<Paper>

@@ -1,3 +1,6 @@
+package com.example.InvestmentJournal.ui.portfolioEdit
+
+import PortfolioViewModel
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -6,6 +9,7 @@ import androidx.compose.material.Divider
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -21,19 +25,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.example.InvestmentJournal.models.SharedPreferencesManager
 import com.example.InvestmentJournal.ui.auth.ApiService
 import com.example.InvestmentJournal.ui.auth.Paper
-import com.example.InvestmentJournal.ui.auth.Portfolio
-import com.example.InvestmentJournal.ui.portfolioEdit.AddPaperDialog
-import com.example.InvestmentJournal.ui.portfolioEdit.PaperCard
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import java.text.DateFormat
 import java.util.Date
 
 @Composable
-fun PortfolioDetailsPage(portfolioId: Int, viewModel: PortfolioViewModel, navHostController: NavHostController) {
+fun PortfolioMonitorningDetailsPage(portfolioId: Int) {
+    val viewModel: PortfolioDetailsMonitorningViewModel = viewModel()
     // Диалоговое окно для добавления бумаги в портфель
     var showDialog by remember { mutableStateOf(false) }
 
@@ -59,58 +63,9 @@ fun PortfolioDetailsPage(portfolioId: Int, viewModel: PortfolioViewModel, navHos
             }
         }
 
-        // Диалоговое окно для добавления новой бумаги
-        if (showDialog) {
-            AddPaperDialog(
-                portfolioId = portfolioId,
-                onDismiss = { showDialog = false },
-                viewModel = viewModel
-            )
-        }
     }
 }
-
-
-
-
-class PortfolioViewModel(private val apiService: ApiService) : ViewModel() {
-
-    val portfolios = mutableStateListOf<Portfolio>()
-
-    init {
-        loadPortfolios()
-    }
-
-    private fun loadPortfolios() {
-        viewModelScope.launch {
-            try {
-                // Прямой вызов suspend функции
-                val portfoliosList = apiService.getUserPortfolios(SharedPreferencesManager.getUser()) // Замените на ваш метод и параметры
-                // Обновите список портфелей в UI
-                portfolios.clear()
-                portfolios.addAll(portfoliosList)
-            } catch (e: Exception) {
-                // Обработка ошибки запроса
-                e.printStackTrace()
-            }
-            delay(1000) // Перезагрузка каждую секунду
-        }
-    }
-
-    // Пример создания нового портфеля
-    fun createPortfolio(portfolioName: String) {
-        viewModelScope.launch {
-            try {
-                val portfolio = Portfolio(id = 0, name = portfolioName, startPrice = 0.0f, currPrice = 0.0f)
-                apiService.createPortfolio(SharedPreferencesManager.getUser(), portfolio) // Используйте ваш метод
-                loadPortfolios() // Перезагружаем список после добавления
-            } catch (e: Exception) {
-                // Обработка ошибки
-                e.printStackTrace()
-            }
-        }
-    }
-
+class PortfolioDetailsMonitorningViewModel(private val apiService: ApiService) : ViewModel() {
     val papers = mutableStateListOf<Paper>()
 
     fun loadPortfolioDetails(portfolioId: Int) {
@@ -145,3 +100,6 @@ class PortfolioViewModel(private val apiService: ApiService) : ViewModel() {
         }
     }
 }
+
+
+

@@ -14,6 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.InvestmentJournal.ui.portfolioEdit.PortfolioDetailsPage
 
 
 @Composable
@@ -54,19 +55,19 @@ fun BottomNav(navController: NavController){
 }
 
 @Composable
-fun NavigationGraph(navController: NavHostController,mainNavController: NavController){
+fun NavigationGraph(navController: NavHostController,mainNavController: NavHostController){
     NavHost(navController, startDestination = BottomNavItem.Edit.screen_route){
         composable(BottomNavItem.Edit.screen_route){
             EditScreen(navController = navController)
         }
         composable(BottomNavItem.Monitorning.screen_route){
-            MonitorningScreen(mainNavController)
+            MonitoringScreen(mainNavController)
         }
         composable(BottomNavItem.Market.screen_route){
             MarketScreen(mainNavController)
         }
         composable("portfolioDetails/{portfolioId}") { backStackEntry ->
-            PortfolioDetailsScreen(portfolioId = backStackEntry.arguments?.getInt("portfolioId"))
+            backStackEntry.arguments?.let { PortfolioDetailsPage(portfolioId = it.getInt("portfolioId")) }
         }
     }
 }

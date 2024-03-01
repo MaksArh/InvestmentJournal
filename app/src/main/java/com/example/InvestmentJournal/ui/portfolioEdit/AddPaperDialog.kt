@@ -1,8 +1,5 @@
 package com.example.InvestmentJournal.ui.portfolioEdit
 
-import PortfolioViewModel
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
@@ -14,13 +11,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
 
 @Composable
-fun AddPaperDialog(portfolioId: Int, onDismiss: () -> Unit, viewModel: PortfolioViewModel) {
+fun AddPaperDialog(portfolioId: Int, onDismiss: () -> Unit, viewModel: PortfolioDetailsViewModel) {
     var ticker by remember { mutableStateOf("") }
     var amount by remember { mutableStateOf("") }
     var buyTime by remember { mutableStateOf(getCurrentDateString()) } // Используется для инициализации значением по умолчанию
